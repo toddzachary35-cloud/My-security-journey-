@@ -2,6 +2,35 @@
 
 A look at the physical and virtual setup I use for hands-on offensive and defensive security practice.
 
+## Network diagram
+
+```mermaid
+flowchart TD
+    Internet([Internet])
+    Router["Router / gateway<br/>192.168.1.1 · /24"]
+    Kali["Kali laptop<br/>offensive / CTFs"]
+    Mint["Linux Mint PC<br/>monitoring / dev"]
+    Server["Debian server<br/>always-on, headless"]
+    Peripherals["Peripherals<br/>Pi Pico – HID injection<br/>RTL8812BU – Wi-Fi monitor / inject<br/>PN532 – RFID / NFC"]
+    Services["Server services<br/>Pi-hole – DNS filtering<br/>WireGuard – VPN<br/>UFW – firewall<br/>Fail2ban – brute-force watch<br/>unattended-upgrades<br/>Prometheus + Grafana (planned)"]
+
+    Internet --> Router
+    Router --> Kali
+    Router --> Mint
+    Router --> Server
+    Internet -. "WireGuard remote access" .-> Server
+    Kali --- Peripherals
+    Server --- Services
+
+    classDef offensive fill:#F5C4B3,stroke:#993C1D,color:#4A1B0C;
+    classDef defensive fill:#9FE1CB,stroke:#0F6E56,color:#04342C;
+    class Kali offensive;
+    class Mint,Server defensive;
+```
+
+*Offensive (coral) vs defensive / infrastructure (teal). Note: the Debian server's CPU predates SSE4.2, which rules out Suricata and DPDK — see below.*
+
+
 ## Devices
 
 | Device | OS | Role |
