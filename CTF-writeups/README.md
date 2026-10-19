@@ -6,3 +6,4 @@ Writeups from TryHackMe rooms and other CTF-style challenges — recon, exploita
 |---|---|---|
 | [Vulnversity](vulnversity.md) | TryHackMe | Web, file upload bypass, reverse shell, enumeration |
 | [Kenobi](kenobi-writeup.md) | TryHackMe | Linux exploitation, service misconfiguration, privilege escalation |
+| [Pickle Rick](pickle-rick-writeup.md) | TryHackMe | Web enumeration, command injection, sudo privilege escalation |
